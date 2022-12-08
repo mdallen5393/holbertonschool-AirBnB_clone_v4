@@ -1,20 +1,20 @@
 $(document).ready(function() {
-  const amenityIdList = {};
+  const amenityIdDict = {};
   const amenityClicked = $('ul li input');
   amenityClicked.on('click', function (event) {
-    if (amenityIdList[amenityClicked.attr('data-id')]) {
-      delete amenityIdList[amenityClicked.attr('data-id')];
+    if (amenityIdDict[amenityClicked.attr('data-id')]) {
+      delete amenityIdDict[amenityClicked.attr('data-id')];
     } else {
-      amenityIdList[amenityClicked.attr('data-id')] = amenityClicked.attr('data-name');
+      amenityIdDict[amenityClicked.attr('data-id')] = amenityClicked.attr('data-name');
     }
 
     updateAmenityH4();
   });
 })
 
-function updateAmenityH4 (amenityIdList) {
+function updateAmenityH4 (amenityIdDict) {
   myList = [];
-  for (item of amenityIdList) {
+  for (item of amenityIdDict) {
     myList.push(item);
   }
   $('div.amenities h4').text(myList);
