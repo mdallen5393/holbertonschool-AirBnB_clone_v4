@@ -11,7 +11,7 @@ $(document).ready(function() {
     }
     $('div.amenities h4').text(listOfCheckedAmenities.join(', '));
 
-    getStatus('http://0.0.0.0:5001/api/v1/status/');
+    getStatus('http://cebc42632524.3ebb58fb.hbtn-cod.io:5001/api/v1/status/');
   });
 })
 
