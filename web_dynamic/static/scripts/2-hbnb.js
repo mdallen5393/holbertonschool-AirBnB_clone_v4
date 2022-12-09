@@ -7,8 +7,8 @@ $(document).ready(function() {
     } else {
       amenityIdDict[amenityClicked.attr('data-id')] = amenityClicked.attr('data-name');
     }
-
     updateAmenityH4();
+    getStatus('http://0.0.0.0:5001/api/v1/status/');
   });
 })
 
@@ -20,6 +20,12 @@ function updateAmenityH4 (amenityIdDict) {
   $('div.amenities h4').text(myList);
 }
 
-$.get(url, function (data) {
-  $('div#api_status').
-})
+function getStatus (url) {
+  $.get(url, function (data) {
+    if (data.status === 'OK') {
+      $('div#api_status').addClass('available');
+    } else {
+      $('div#api_status').removeClass('available');
+    }
+  });
+}
