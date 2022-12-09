@@ -11,13 +11,15 @@ $(document).ready(function() {
     }
     $('div.amenities h4').text(listOfCheckedAmenities.join(', '));
 
-    getStatus('http://cebc42632524.3ebb58fb.hbtn-cod.io:5001/api/v1/status/');
   });
+  getStatus('http://d1eb7851f2e7.7399d2e2.hbtn-cod.io:5001/api/v1/status/');
+
 })
 
 
 function getStatus (url) {
   $.get(url, function (data) {
+    console.log(data.status)
     if (data.status === 'OK') {
       $('div#api_status').addClass('available');
     } else {
