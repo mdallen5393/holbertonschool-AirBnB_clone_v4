@@ -15,7 +15,6 @@ $(document).ready(function() {
   });
 })
 
-
 function getStatus (url) {
   $.get(url, function (data) {
     if (data.status === 'OK') {
