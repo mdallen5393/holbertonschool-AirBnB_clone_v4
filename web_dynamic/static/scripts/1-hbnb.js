@@ -1,21 +1,14 @@
 $(document).ready(function() {
-  const amenityIdDict = {};
-  const amenityClicked = $('ul li input');
-  amenityClicked.on('click', function (event) {
-    if (amenityIdDict[amenityClicked.attr('data-id')]) {
-      delete amenityIdDict[amenityClicked.attr('data-id')];
+  let listOfCheckedAmenities = [];
+
+  $('li :checkbox').change( function () {
+    const dataName = $(this).attr("data-name");
+
+    if (this.checked) {
+      listOfCheckedAmenities.push(dataName);
     } else {
-      amenityIdDict[amenityClicked.attr('data-id')] = amenityClicked.attr('data-name');
+      listOfCheckedAmenities = listOfCheckedAmenities.filter((item) => item !== dataName);
     }
-
-    updateAmenityH4();
+    $('div.amenities h4').text(listOfCheckedAmenities.join(', '));
   });
-})
-
-function updateAmenityH4 (amenityIdDict) {
-  myList = [];
-  for (item of amenityIdDict) {
-    myList.push(item);
-  }
-  $('div.amenities h4').text(myList);
-}
+});
