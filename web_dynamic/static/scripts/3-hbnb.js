@@ -13,8 +13,8 @@ $(document).ready(function() {
 
 
   });
-  getStatus('http://d1eb7851f2e7.7399d2e2.hbtn-cod.io:5001/api/v1/status/');
-  places('http://d1eb7851f2e7.7399d2e2.hbtn-cod.io:5001/api/v1/places_search/');
+  getStatus('http://cebc42632524.3ebb58fb.hbtn-cod.io:5001/api/v1/status/');
+  places('http://cebc42632524.3ebb58fb.hbtn-cod.io:5001/api/v1/places_search/');
 })
 
 function getStatus (url) {
@@ -36,7 +36,7 @@ function places (url) {
     data: JSON.stringify({}),
     success: function(data) {
       for (const place of data) {
-        $.get('http://d1eb7851f2e7.7399d2e2.hbtn-cod.io:5001/api/v1/users/' + place.user_id, function (userData) {
+        $.get('http://cebc42632524.3ebb58fb.hbtn-cod.io:5001/api/v1/users/' + place.user_id, function (userData) {
           let guestsPlural = '';
           if (place.max_guest != 1) {
             let guestsPlural ='s';
@@ -52,7 +52,7 @@ function places (url) {
           let html = `<article>
           <div class="title_box">
             <h2>${place.name}</h2>
-            <div class="price_by_night">${place.price_by_night}</div>
+            <div class="price_by_night">$${place.price_by_night}</div>
           </div>
           <div class="information">
             <div class="max_guest">${place.max_guest} Guest${guestsPlural}</div>
